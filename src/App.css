@@ -1,38 +1,31 @@
-.App {
+#partesBuild {
   text-align: center;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+#titulo {
+  text-align: center;
+  color: rgb(220, 243, 89);
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+#card {
+  margin-right: 250px;
+  overflow: hidden;
+  width: 240px;
+  background-color: rgb(252, 255, 90);
+  box-shadow: px 4px;
+  transition: 0.3s;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+#card:hover {
+  box-shadow: 5px 16px 0 rgba(251, 251, 251, 0.2);
+}
+#container {
+  padding: 2px 16px;
+}
+#kushala {
+  overflow: hidden;
+  width: 220px;
+  height: 200px;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#filaejemplos {
+  display: inline-flex;
+  justify-content: space-between;
 }
