@@ -2,11 +2,13 @@ import "./App.css";
 import BuildParts from "./Components/BuildParts";
 import Titulo from "./Components/Titulo";
 import ExampleBuilds from "./Components/ExampleBuild";
-import Autocomplete from "./Components/Autocomplete";
+import Autocomplete from "./Components/Autocomplete"
 function App() {
   return (
     <div>
       <Titulo></Titulo>
+      
+      <Autocomplete suggestions={["Oranges", "Apples", "Banana", "Kiwi", "Mango"]}/>
       <BuildParts></BuildParts>
       <br></br>
       <br></br>

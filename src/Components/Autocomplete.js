@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import './styles.css'
+import "../App.css";
 
 class Autocomplete extends Component {
   constructor(props) {
@@ -8,41 +8,42 @@ class Autocomplete extends Component {
       activeSuggestion: 0,
       filteredSuggestions: [],
       showSuggestions: false,
-      userInput: ""
+      userInput: "",
     };
   }
-  onChange = e => {
-    const { suggestions } = this.props;
+  onChange = (e) => {
+    const suggestions = this.getData();
     const userInput = e.currentTarget.value;
-  
+
     const filteredSuggestions = suggestions.filter(
-      suggestion =>
+      (suggestion) =>
         suggestion.toLowerCase().indexOf(userInput.toLowerCase()) > -1
     );
-  
+
     this.setState({
       activeSuggestion: 0,
       filteredSuggestions,
       showSuggestions: true,
-      userInput: e.currentTarget.value
+      userInput: e.currentTarget.value,
     });
   };
-  onClick = e => {
+  onClick = (e) => {
     this.setState({
       activeSuggestion: 0,
       filteredSuggestions: [],
       showSuggestions: false,
-      userInput: e.currentTarget.innerText
+      userInput: e.currentTarget.innerText,
     });
   };
-  onKeyDown = e => {
+
+  onKeyDown = (e) => {
     const { activeSuggestion, filteredSuggestions } = this.state;
-  
+
     if (e.keyCode === 13) {
       this.setState({
         activeSuggestion: 0,
         showSuggestions: false,
-        userInput: filteredSuggestions[activeSuggestion]
+        userInput: filteredSuggestions[activeSuggestion],
       });
     } else if (e.keyCode === 38) {
       if (activeSuggestion === 0) {
@@ -58,6 +59,7 @@ class Autocomplete extends Component {
       this.setState({ activeSuggestion: activeSuggestion + 1 });
     }
   };
+
   render() {
     const {
       onChange,
@@ -67,50 +69,67 @@ class Autocomplete extends Component {
         activeSuggestion,
         filteredSuggestions,
         showSuggestions,
-        userInput
-      }
+        userInput,
+      },
     } = this;
-  
+
     let suggestionsListComponent;
     if (showSuggestions && userInput) {
-        if (filteredSuggestions.length) {
-          suggestionsListComponent = (
-            <ul class="suggestions">
-              {filteredSuggestions.map((suggestion, index) => {
-                let className;
-      
-                // Flag the active suggestion with a class
-                if (index === activeSuggestion) {
-                  className = "suggestion-active";
-                }
-                return (
-                  <li className={className} key={suggestion} onClick={onClick}>
-                    {suggestion}
-                  </li>
-                );
-              })}
-            </ul>
-          );
-        } else {
-          suggestionsListComponent = (
-            <div class="no-suggestions">
-              <em>No suggestions available.</em>
-            </div>
-          );
-        }
+      if (filteredSuggestions.length) {
+        suggestionsListComponent = (
+          <ul class="suggestions">
+            {filteredSuggestions.map((suggestion, index) => {
+              let className;
+
+              // Flag the active suggestion with a class
+              if (index === activeSuggestion) {
+                className = "suggestion-active";
+              }
+              return (
+                <li className={className} key={suggestion} onClick={onClick}>
+                  {suggestion}
+                </li>
+              );
+            })}
+          </ul>
+        );
+      } else {
+        suggestionsListComponent = (
+          <div class="no-suggestions">
+            <em>No suggestions available.</em>
+          </div>
+        );
       }
-      return (
-        <Fragment>
-          <input
-            type="text"
-            onChange={onChange}
-            onKeyDown={onKeyDown}
-            value={userInput}
-          />
-          {suggestionsListComponent}
-        </Fragment>
-      );
     }
+    return (
+      <Fragment>
+        <input
+          type="text"
+          onChange={onChange}
+          onKeyDown={onKeyDown}
+          value={userInput}
+        />
+        {suggestionsListComponent}
+      </Fragment>
+    );
   }
-  
-  export default Autocomplete;
+  getData = () => {
+    fetch("./ApiData/AllWeapons.json", {
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    })
+      .then(function (response) {
+        console.log(response);
+
+        return response.json();
+      })
+      .then(function (response) {
+        console.log(response);
+        return response.map((w) => w.name);
+      });
+  };
+}
+
+export default Autocomplete;

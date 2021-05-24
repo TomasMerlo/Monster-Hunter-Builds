@@ -2,9 +2,10 @@ function BuildParts() {
   return (
     <div id="partesBuild">
       <input id="weaponSearch" type="search" placeholder="Weapon" />
+
       <br></br>
       <br></br>
-      <input type="search" placeholder="Head" />
+      <input autocomplete type="search" placeholder="Head" />
       <br></br>
       <br></br>
       <input type="search" placeholder="Chest" />
