@@ -1,17 +1,45 @@
+import React from "react";
 import "./App.css";
 import BuildParts from "./Components/BuildParts";
 import Titulo from "./Components/Titulo";
 import ExampleBuilds from "./Components/ExampleBuild";
-import Autocomplete from "./Components/Autocomplete"
+import Autocomplete from "./Components/Autocomplete";
+import Navbar from "./Components/NAVBAR/Navbar";
 function App() {
   return (
     <div>
+      <div className="App">
+        <Navbar></Navbar>
+      </div>
+      <br></br>
+      <br></br>
       <Titulo></Titulo>
-      
-      <Autocomplete suggestions={["Oranges", "Apples", "Banana", "Kiwi", "Mango"]}/>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+
+      <Autocomplete
+        suggestions={["Oranges", "Apples", "Banana", "Kiwi", "Mango"]}
+      />
       <BuildParts></BuildParts>
       <br></br>
       <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      
+
       <div id="filaejemplos">
         <ExampleBuilds
           setImage="build 1"

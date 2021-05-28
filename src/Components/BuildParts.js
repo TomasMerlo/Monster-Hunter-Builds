@@ -20,7 +20,7 @@ function BuildParts() {
       <input type="search" placeholder="Legs" />
       <br></br>
       <br></br>
-      <input onClick="#" type="button" value="Send" name="boton"></input>
+      <input onClick="#" type="button" value="Share" name="boton"></input>
     </div>
   );
 }
